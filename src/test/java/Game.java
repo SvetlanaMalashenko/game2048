@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -88,7 +85,9 @@ public class Game {
             element.isDisplayed();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             return true;
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e ) {
+            return false;
+        } catch (StaleElementReferenceException elementReferenceException) {
             return false;
         }
     }
